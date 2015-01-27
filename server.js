@@ -1,14 +1,24 @@
-var express = require('express'),
-    app = express();
-
+var express = require('express');
 var logger = require('morgan');
-app.use(logger('dev')); 
 
-app.get('/', function(req, res) {
-    res.send('Hello World');
-});
+// express-namespace should be loaded before app is instantiated
+var namespace = require('express-namespace');
+var resource = require('express-resource');
 
-app.get("/getAllDocuments", function(req, res) {
+var app = express();
+app.use(logger('dev'));
+
+// Pass the Express instance to the routes module
+var routes = require('./routes')(app);
+
+// Load the resourceful route handler
+app.resource('users', require('./handlers/users.js'));
+
+app.listen(process.env.PORT);
+console.log('Express server started on port %s', process.env.PORT);
+
+
+/*app.get("/getAllDocuments", function(req, res) {
 
     var MongoClient = require('mongodb').MongoClient,
         assert = require('assert');
@@ -22,7 +32,7 @@ app.get("/getAllDocuments", function(req, res) {
             res.send(data);
             db.close();
         });
-        
+
     });
 
     var findDocuments = function(db, callback) {
@@ -30,9 +40,9 @@ app.get("/getAllDocuments", function(req, res) {
         var collection = db.collection('travels');
         // Insert some documents
         collection.find({}).toArray(function(err, docs) {
-            
+
             assert.equal(err, null);
-          
+
             console.log("Found the following records");
             console.dir(docs)
             callback(docs);
@@ -54,7 +64,7 @@ app.get('/insert', function(req, res) {
     console.log("ce faci"); // Use connect method to connect to the Server 
     MongoClient.connect(url, function(err, db) {
         assert.equal(null, err);
-     
+
         insertDocuments(db, function() {
             console.log("uite aici");
             db.close();
@@ -88,9 +98,4 @@ app.get('/insert', function(req, res) {
 
 
     res.send('Inserted some hardcoded stuff');
-});
-
-
-
-app.listen(process.env.PORT);
-console.log('Express server started on port %s', process.env.PORT);
+});*/
