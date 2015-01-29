@@ -1,5 +1,6 @@
 var express = require('express');
 var logger = require('morgan');
+var bodyParser = require('body-parser')
 
 // express-namespace should be loaded before app is instantiated
 var namespace = require('express-namespace');
@@ -7,12 +8,20 @@ var resource = require('express-resource');
 
 var app = express();
 app.use(logger('dev'));
+app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // Pass the Express instance to the routes module
 var routes = require('./routes')(app);
 
 // Load the resourceful route handler
 app.resource('users', require('./handlers/users.js'));
+app.resource('travels', require('./handlers/travels.js'));
 
 app.listen(process.env.PORT);
 console.log('Express server started on port %s', process.env.PORT);
