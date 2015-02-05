@@ -41,5 +41,7 @@ app.resource('api/users', require('./handlers/users.js'));
 app.resource('travels', require('./handlers/travels.js'));
 app.resource('dashboard', require('./handlers/dashboard.js'));
 
-app.listen(process.env.PORT);
+var server = app.listen(process.env.PORT);
+
+
 console.log('Express server started on port %s', process.env.PORT);
