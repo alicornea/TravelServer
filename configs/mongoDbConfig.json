@@ -1,5 +1,5 @@
 {
-    "url": "mongodb://%s:%s@ds051977.mongolab.com:51977/test_cluj",
+    "url": "mongodb://%s:%s@ds045679.mongolab.com:45679/test_cluj",
     "username": "ali",
     "password": "ali"
 }
