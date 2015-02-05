@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 var mongoose = require('mongoose');
 var db = mongoose.createConnection('mongodb://gigi:gigi@ds051977.mongolab.com:51977/test_cluj');
 console.log(mongoose.connection.readyState)
+=======
+var db = require('../DbLayer/mongoDb.js').initConnection();
+
+>>>>>>> b00ca91637d5d731c5c92119d3673e1b31624dd3
 var travelSchema = require('../models/travel/travelModel.js').travelSchema;
 var travelModel = db.model('newTravelModel', travelSchema);
 

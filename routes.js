@@ -1,13 +1,12 @@
 // Load the route handlers
 var routes = require('./handlers');
 var users = require('./handlers/users');
+var authenticate = require('./handlers/authenticate');
 
 
 module.exports = function(app) {
-
-    // Define the routes
     app.get('/', routes.index);
-    app.namespace('/users', function() {
-        app.get('/getByUsername/:username', users.getUserByUserName);
-    });
+
+    app.post('/authenticate', authenticate.authenticate);
+    app.post('/authenticateViaFacebook', authenticate.authenticateViaFacebook);
 }
