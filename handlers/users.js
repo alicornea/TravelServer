@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var db = mongoose.createConnection('mongodb://ali:ali@ds051977.mongolab.com:51977/test_cluj');
+var db = mongoose.createConnection('mongodb://gigi:gigi@ds051977.mongolab.com:51977/test_cluj');
 var usersSchema = require('../models/users/usersModel.js').usersSchema;
 var users = db.model('users', usersSchema);
 

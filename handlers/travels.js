@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var db = mongoose.createConnection('mongodb://ali:ali@ds051977.mongolab.com:51977/test_cluj');
-
+var db = mongoose.createConnection('mongodb://gigi:gigi@ds051977.mongolab.com:51977/test_cluj');
+console.log(mongoose.connection.readyState)
 var travelSchema = require('../models/travel/travelModel.js').travelSchema;
 var travelModel = db.model('newTravelModel', travelSchema);
 

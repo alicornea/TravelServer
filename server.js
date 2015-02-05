@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 var namespace = require('express-namespace');
 var resource = require('express-resource');
 
+
 var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -22,6 +23,7 @@ var routes = require('./routes')(app);
 // Load the resourceful route handler
 app.resource('users', require('./handlers/users.js'));
 app.resource('travels', require('./handlers/travels.js'));
+app.resource('dashboard', require('./handlers/dashboard.js'));
 
 app.listen(process.env.PORT);
 console.log('Express server started on port %s', process.env.PORT);
