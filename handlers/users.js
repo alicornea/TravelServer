@@ -1,7 +1,21 @@
-var mongoose = require('mongoose');
-var db = mongoose.createConnection('mongodb://gigi:gigi@ds051977.mongolab.com:51977/test_cluj');
+var db = require('../DbLayer/mongoDb.js').initConnection();
 var usersSchema = require('../models/users/usersModel.js').usersSchema;
 var users = db.model('users', usersSchema);
+
+exports.getUserByUserName = function(req, res) {
+    users.find({
+        username: req.params.username
+    }, function(error, doc) {
+        if (doc)
+            res.json(doc);
+        else if (error)
+            res.json({
+                error: error
+            });
+        else
+            res.send('user not found');
+    });
+};
 
 exports.index = function(req, res) {
     users.find({}, function(error, doc) {

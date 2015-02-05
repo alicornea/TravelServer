@@ -6,11 +6,10 @@ var bodyParser = require('body-parser')
 var namespace = require('express-namespace');
 var resource = require('express-resource');
 
-<<<<<<< HEAD
-=======
+
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
->>>>>>> b00ca91637d5d731c5c92119d3673e1b31624dd3
+
 
 var app = express();
 app.use(logger('dev'));

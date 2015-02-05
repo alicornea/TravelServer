@@ -1,6 +1,5 @@
-var mongoose = require('mongoose');
-console.log(mongoose.connection.readyState)
-var db = mongoose.createConnection('mongodb://gigi:gigi@ds051977.mongolab.com:51977/test_cluj');
+
+var db = require('../DbLayer/mongoDb.js').initConnection();
 var dashboardSchema = require('../models/dashboard/dashboardModel.js').dashboardSchema;
 var dashboardModel = db.model('dashboard', dashboardSchema);
 
