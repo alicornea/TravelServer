@@ -17,19 +17,7 @@ exports.show = function(req, res) {
         else
             res.send('user not found');
     });
-    /*
-    users.find({
-        username: req.params.username
-    }, function(error, doc) {
-        if (doc)
-            res.json(doc);
-        else if (error)
-            res.json({
-                error: error
-            });
-        else
-            res.send('user not found');
-    });*/
+   
 };
 
 
