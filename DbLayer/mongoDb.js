@@ -1,4 +1,7 @@
+var Q = require('q');
+
 exports.initConnection = function() {
+    var deferred = Q.defer();
     var mongoose = require('mongoose');
     var config = require('../configs/mongoDbConfig.json');
     var util = require("util");
@@ -14,15 +17,15 @@ exports.initConnection = function() {
 
     try {
         if (mongoose.connection.readyState > 0) //connection not closed
-            return mongoose.connection
+            return deferred.resolve(mongoose.connection).promise;
             
         mongoose.connect(connectionString);
         console.log("Started connection on " + (connectionString) + ", waiting for it to open...");
-        return mongoose.connection;
+        return deferred.resolve(mongoose.connection).promise;
     }
     catch (err) {
         console.log(("Setting up failed to connect to " + connectionString), err.message);
     }
 
     return null;
-}
+};

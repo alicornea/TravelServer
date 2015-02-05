@@ -1,4 +1,6 @@
-var db = require('../DbLayer/mongoDb.js').initConnection();
+var db = require('../DbLayer/mongoDb.js').initConnection(function(err, connection){
+    db = connection;
+});
 var usersSchema = require('../models/users/usersModel.js').usersSchema;
 var users = db.model('users', usersSchema);
 var jwt = require('jsonwebtoken');
