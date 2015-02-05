@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 exports.travelSchema = new mongoose.Schema({
     user: String,
-    location: String,
+    leavingFrom: String,
+    destination: String,
     flight: String,
     startDate: Date,
     endDate: Date,

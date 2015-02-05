@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var db = mongoose.createConnection('mongodb://ali:ali@ds051977.mongolab.com:51977/test_cluj');
 
 var travelSchema = require('../models/travel/travelModel.js').travelSchema;
-var travelModel = db.model('newTravelModel', travelSchema);
+var travelModel = db.model('travels', travelSchema);
 
 exports.index = function(req, res) {
     return travelModel.find(function(err, travels){
@@ -22,7 +22,8 @@ exports.create = function(req, res) {
     console.log(req);
     var newTravel = new travelModel({
         user: "nada for the moment",
-        location: req.body.locationName,
+        leavingFrom: req.body.leavingFrom,
+        destination: req.body.destination,
         flight: req.body.flight,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
