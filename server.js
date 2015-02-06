@@ -43,5 +43,4 @@ app.resource('dashboard', require('./handlers/dashboard.js'));
 
 var server = app.listen(process.env.PORT);
 
-
 console.log('Express server started on port %s', process.env.PORT);
