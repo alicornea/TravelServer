@@ -34,8 +34,16 @@ exports.new = function(req, res) {
     res.send('form for new user');
 };
 
-exports.create = function(req, res) {
-    res.send('handle form for new user');
+exports.create = function(req, cb) {
+    var newUser = new users({
+        username: '',
+        password: '',
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: ''
+    });
+
+    newUser.save(cb);
 };
 
 exports.show = function(req, res) {
