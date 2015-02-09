@@ -13,8 +13,9 @@ mongoose.connection.on("error", function(err) {
     console.log("Could not connect to mongo server : " + err);
     if (retry > 5)
         return;
+
     console.log("Retry " + retry + "...");
-    prepareConnection();
+    setTimeout(prepareConnection(), 5000);
 });
 
 prepareConnection();
@@ -46,7 +47,7 @@ function prepareConnection() {
             }
         }
     }
-
+    mongoose.disconnect();
     mongoose.connect(connectionString, options);
     console.log("Started connection on " + (connectionString) + ", waiting for it to open...");
 }

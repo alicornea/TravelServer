@@ -9,4 +9,5 @@ module.exports = function(app) {
 
     app.post('/authenticate', authenticate.authenticate);
     app.post('/authenticateViaFacebook', authenticate.authenticateViaFacebook);
+    app.post('/authenticateViaTwitter', authenticate.authenticateViaTwitter);
 }

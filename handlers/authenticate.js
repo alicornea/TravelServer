@@ -59,18 +59,47 @@ exports.authenticateViaFacebook = function(req, res) {
     }
 }
 
-function getUserById(userId) {
-
-};
+exports.authenticateViaTwitter = function(req, res) {
+    try {
+        require('../DbLayer/twitterUsers.js').find(req.body.id, function(error, doc) {
+            if (doc && doc.length > 0) {
+                users.findById(doc[0].userId, function(error, doc) { //get the corresponding user for the Twitter user
+                    if (doc)
+                        res.json({
+                            token: returnToken(doc)
+                        });
+                    return null;
+                })
+            }
+            else { //we need to create a new user corresponding to the Twitter user
+                require('./users.js').create(req, function(error, userDoc, affected) {
+                    if (error) {
+                        console.log("Error while creating user: " + error);
+                    }
+                    else { //user created, link to Twitter account
+                        require('../DbLayer/twitterUsers.js').create(req.body.id, userDoc, function(error, doc, affected) {
+                            res.json({
+                                token: returnToken(userDoc)
+                            });
+                        });
+                    }
+                });
+            }
+        });
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
 
 function returnToken(user) {
     var profile = {
         first_name: user.first_name,
         last_name: user.last_name,
-        email: user.email != undefined ? user.email : 'sadsad',
+        email: user.email != undefined ? user.email : '',
         id: user._id
     };
-    console.log(profile);
+
     // We are sending the profile inside the token
     return jwt.sign(profile, secret, {
         expiresInMinutes: 60 * 5
