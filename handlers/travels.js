@@ -1,4 +1,3 @@
-
 var db = require('../DbLayer/mongoDb.js').initConnection();
 
 var travelSchema = require('../models/travel/travelModel.js').travelSchema;

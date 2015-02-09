@@ -1,5 +1,7 @@
 
-var db = require('../DbLayer/mongoDb.js').initConnection();
+var db = require('../DbLayer/mongoDb.js').initConnection(function(err, connection){
+    db = connection;
+});
 var dashboardSchema = require('../models/dashboard/dashboardModel.js').dashboardSchema;
 var dashboardModel = db.model('dashboard', dashboardSchema);
 

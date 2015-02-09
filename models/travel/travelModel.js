@@ -11,7 +11,9 @@ exports.travelSchema = new mongoose.Schema({
     rating: Number,
     visitedPlaces: [{
         name: String,
+        title: String,
         review: String,
-        rating: Number
+        rating: Number,
+        date: Date
     }]
 });
