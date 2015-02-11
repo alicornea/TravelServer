@@ -1,5 +1,5 @@
 var db = require('./mongoDb.js').initConnection();
-var twitterUsersSchema = require('../models/users/twitterUsersModel.js').twiUsersSchema;
+var twitterUsersSchema = require('../models/users/twitterUsersModel.js').twitterUsersSchema;
 var twitterUsers = db.model('twitterUsers', twitterUsersSchema);
 
 exports.create = function(twitterId, user, cb) {
