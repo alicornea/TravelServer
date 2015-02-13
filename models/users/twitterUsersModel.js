@@ -2,6 +2,6 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 exports.twitterUsersSchema = new mongoose.Schema({
-    twitterkUserId: String,
+    twitterUserId: String,
     userId: schema.ObjectId
 });

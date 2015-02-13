@@ -9,7 +9,7 @@ exports.travelSchema = new mongoose.Schema({
     endDate: Date,
     review: String,
     rating: Number,
-    visitedPlaces: [{
+    attractions: [{
         name: String,
         title: String,
         review: String,
