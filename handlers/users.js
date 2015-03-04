@@ -30,10 +30,6 @@ exports.index = function(req, res) {
     });
 };
 
-exports.new = function(req, res) {
-    res.send('form for new user');
-};
-
 exports.create = function(req, cb) {
     var newUser = new users({
         username: '',
