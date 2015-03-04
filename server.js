@@ -15,9 +15,9 @@ var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods","POST, GET, OPTIONS, PUT");
+    res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE");
     next();
@@ -29,7 +29,7 @@ app.use('/api', expressJwt({
     secret: secret
 }));
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     if (err.constructor.name === 'UnauthorizedError') {
         res.status(401).send('Unauthorized');
     }
@@ -43,6 +43,6 @@ app.resource('api/users', require('./handlers/users.js'));
 app.resource('travels', require('./handlers/travels.js'));
 app.resource('dashboard', require('./handlers/dashboard.js'));
 
-var server = app.listen(process.env.PORT);
+var server = app.listen(3000, 'dev.travelserver.com');
 
-console.log('Express server started on port %s', process.env.PORT);
+//console.log('Express server started on port %s', process.env.PORT);
