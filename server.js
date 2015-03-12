@@ -41,6 +41,7 @@ var routes = require('./routes')(app);
 // Load the resourceful route handler
 app.resource('api/users', require('./handlers/users.js'));
 app.resource('api/travels', require('./handlers/travels.js'));
+app.resource('api/buddies', require('./handlers/buddies.js'));
 app.resource('dashboard', require('./handlers/dashboard.js'));
 
 var server = app.listen(3000, 'dev.travelserver.com');
