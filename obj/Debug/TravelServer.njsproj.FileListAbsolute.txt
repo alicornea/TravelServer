@@ -1,2 +1,3 @@
 C:\Andrei\GitHub\TravelServer\obj\Debug\TravelServer.njsprojResolveAssemblyReference.cache
 C:\Andrei\GitHub\TravelServer\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\andrei.murgu\Documents\GitHub\TravelServer\obj\Debug\TravelServer.njsprojResolveAssemblyReference.cache
