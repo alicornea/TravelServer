@@ -45,11 +45,6 @@ Temporary Items
 .c9revisions/
 .c9/
 node_modules/
-<<<<<<< HEAD
 *.suo
-TravelServer.v12.suo
-=======
-TravelServer.v12.suo
 .ntvs_analysis.dat
->>>>>>> origin/master
 *.dat
