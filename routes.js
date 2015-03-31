@@ -13,6 +13,7 @@ module.exports = function (app) {
     app.post('/authenticateViaTwitter', authenticate.authenticateViaTwitter);
     
     app.post('/register', users.create);
+    app.post('/api/users/changePassword', users.changePassword);
     app.get('/api/travels/getTravelsByProfileId/:profileId', travels.getTravelsByProfileId);
     
     /* Buddies methods */

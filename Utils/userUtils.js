@@ -6,7 +6,8 @@ exports.returnToken = function (user) {
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email != undefined ? user.email : '',
-        id: user._id
+        id: user._id,
+        appUser : user.username != undefined && user.username != ''
     };
     
     // We are sending the profile inside the token
